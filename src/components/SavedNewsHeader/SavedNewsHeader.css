@@ -1,0 +1,12 @@
+.saved-news-header {
+  padding: 120px 104px 40px;
+}
+
+.saved-news-header__subtitle {
+  color: #b6bcbf;
+}
+
+.saved-news-header__title {
+  font-family: "Robot Slab", serif;
+  max-width: 530px;
+}

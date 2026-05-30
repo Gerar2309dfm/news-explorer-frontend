@@ -1,0 +1,118 @@
+.cards {
+  padding: 80px 104px;
+
+  background-color: #f5f6f7;
+}
+
+.cards__title {
+  margin: 0 0 64px;
+
+  font-size: 40px;
+}
+
+.cards__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  margin-bottom: 64px;
+}
+
+.cards__button {
+  display: block;
+
+  margin: 0 auto;
+  padding: 20px 84px;
+
+  border: none;
+  border-radius: 80px;
+
+  background-color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .cards {
+    padding: 40px;
+  }
+
+  .cards_list{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cards {
+    padding: 32px 16px;
+  }
+
+  .cards__lists {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+.preloader {
+  padding: 80px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preloader__circle {
+  width: 74px;
+  height: 74px;
+
+  border: 6px solid #d1d2d6;
+  border-top-color: #1a1b22;
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+}
+
+.preloader__text {
+  margin-top: 24px;
+
+  color: #b6bcbf;
+  font-size: 18px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.not-found {
+  padding: 86px 0 80px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #f5f6f7;
+}
+
+.not-found__image {
+  width: 82px;
+  height: 82px;
+}
+
+.not-found__title {
+  margin: 24px 0 16px;
+
+  font-family: "Roboto Slab", serif;
+  font-size: 26px;
+}
+
+.not-found__text {
+  max-width: 356px;
+
+  text-align: center;
+  color: #b6bcbf;
+}
