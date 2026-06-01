@@ -1,16 +1,23 @@
 import { useState } from "react";
-import "./LoginModal.css";
+import "./RegisterModal.css";
 
-function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
+function RegisterModal({
+  isOpen,
+  onClose,
+  onRegister,
+  onLoginClick,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onLogin({
+    onRegister({
       email,
       password,
+      name,
     });
   };
 
@@ -31,7 +38,7 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
         </button>
 
         <h2 className="modal__title">
-          Iniciar sesión
+          Inscribirse
         </h2>
 
         <form
@@ -45,7 +52,6 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
           <input
             type="email"
             className="modal__input"
-            placeholder="Introduce tu correo"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -58,9 +64,20 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
           <input
             type="password"
             className="modal__input"
-            placeholder="Introduce tu contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <label className="modal__label">
+            Nombre de usuario
+          </label>
+
+          <input
+            type="text"
+            className="modal__input"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
 
@@ -68,20 +85,20 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
             type="submit"
             className="modal__submit"
           >
-            Iniciar sesión
+            Inscribirse
           </button>
 
           <button
             type="button"
             className="modal__switch"
-            onClick={onRegisterClick}
+            onClick={onLoginClick}
           >
-            o inscríbete
-        </button>
+            o iniciar sesión
+          </button>
         </form>
       </div>
     </div>
   );
 }
 
-export default LoginModal;
+export default RegisterModal;
