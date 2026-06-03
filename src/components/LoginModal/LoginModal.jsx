@@ -5,8 +5,16 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const isValid =
+    email.trim() !== "" &&
+    password.trim() !== "";
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!isValid) {
+      return;
+    }
 
     onLogin({
       email,
@@ -66,18 +74,29 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
 
           <button
             type="submit"
-            className="modal__submit"
+            className={`modal__submit ${
+              !isValid
+                ? "modal__submit_disabled"
+                : ""
+            }`}
+            disabled={!isValid}
           >
             Iniciar sesión
           </button>
 
-          <button
-            type="button"
-            className="modal__switch"
-            onClick={onRegisterClick}
-          >
-            o inscríbete
-        </button>
+          <div className="modal__switch">
+            <span className="modal__switch-text">
+             o
+            </span>
+
+            <button
+               type="button"
+              className="modal__switch-link"
+              onClick={onRegisterClick}
+            >
+              Inscribirse
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -76,7 +76,7 @@
 }
 
 .modal__submit {
-  margin-top: 16px;
+  margin-top: 32px;
   padding: 20px;
 
   border: none;
@@ -98,6 +98,42 @@
 
 .modal__submit:active {
   background: #2a65cc;
+}
+
+.modal__submit_disabled {
+  background: #e6e8eb;
+  color: #b6bcbf;
+  cursor: not-allowed;
+}
+
+.modal__switch {
+  margin-top: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.modal__switch-text {
+  color: #000;
+  font-size: 14px;
+}
+
+.modal__switch-link {
+  border: none;
+  background: transparent;
+
+  color: #2f71e5;
+
+  font-size: 14px;
+
+  cursor: pointer;
+  padding: 0;
+}
+
+.modal__switch-link:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 480px) {

@@ -6,7 +6,8 @@ import notFound from "../../images/not-found.svg";
 
 import "./NewsCardList.css";
 
-function NewsCardList({ articles = [], isLoading }) {
+function NewsCardList({ articles = [], keyword, isLoading, isLoggedIn,
+   onLoginClick, isSavedNews, onDeleteArticle, savedArticles = [], }) {
   const [visibleCards, setVisibleCards] = useState(3);
 
   const handleShowMore = () => {
@@ -47,15 +48,23 @@ function NewsCardList({ articles = [], isLoading }) {
 
   return (
     <section className="cards">
+      {!isSavedNews && (
       <h2 className="cards__title">
         Resultados de búsqueda
       </h2>
+      )}
 
       <div className="cards__list">
-        {articles.slice(0, visibleCards).map((article, index) => (
+        {articles.slice(0, visibleCards).map((article) => (
           <NewsCard
-            key={index}
+            key={article._id || article.url}
             article={article}
+            keyword={keyword}
+            isLoggedIn={isLoggedIn}
+            onLoginClick={onLoginClick}
+            isSavedNews={isSavedNews}
+            onDeleteArticle={onDeleteArticle}
+            savedArticles={savedArticles}
           />
         ))}
       </div>

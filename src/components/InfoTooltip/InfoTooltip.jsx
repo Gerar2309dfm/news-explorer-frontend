@@ -4,10 +4,17 @@ function InfoTooltip({
   isOpen,
   onClose,
   onLoginClick,
+  message,
 }) {
+  const isSuccess =
+    message ===
+    "Registro completado con éxito";
+
   return (
     <div
-      className={`modal ${isOpen ? "modal_opened" : ""}`}
+      className={`modal ${
+        isOpen ? "modal_opened" : ""
+      }`}
       onClick={onClose}
     >
       <div
@@ -22,15 +29,17 @@ function InfoTooltip({
         </button>
 
         <h2 className="modal__title">
-          ¡El registro se ha completado con éxito!
+          {message}
         </h2>
 
-        <button
-          className="modal__switch"
-          onClick={onLoginClick}
-        >
-          Iniciar sesión
-        </button>
+        {isSuccess && (
+          <button
+            className="modal__switch"
+            onClick={onLoginClick}
+          >
+            Iniciar sesión
+          </button>
+        )}
       </div>
     </div>
   );

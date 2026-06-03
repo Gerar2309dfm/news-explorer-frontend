@@ -47,6 +47,44 @@ class MainApi {
       },
     }).then(this._checkResponse);
   }
+  getArticles(token) {
+  return fetch(`${this._baseUrl}/articles`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(this._checkResponse);
+}
+
+  saveArticle(article, keyword, token) {
+  return fetch(`${this._baseUrl}/articles`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      keyword,
+      title: article.title,
+      text: article.description,
+      date: article.publishedAt,
+      source: article.source.name,
+      link: article.url,
+      image: article.urlToImage,
+    }),
+  }).then(this._checkResponse);
+}
+
+  deleteArticle(articleId, token) {
+  return fetch(
+    `${this._baseUrl}/articles/${articleId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  ).then(this._checkResponse);
+}
 }
 
 const api = new MainApi(BASE_URL);

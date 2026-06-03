@@ -3,11 +3,16 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 
 import "./SavedNews.css";
 
-function SavedNews() {
+function SavedNews({ articles, onDeleteArticle }) {
   return (
     <section className="saved-news">
-      <SavedNewsHeader />
-      <NewsCardList />
+      <SavedNewsHeader 
+       articles={articles} />
+      <NewsCardList 
+       articles={articles}
+       isSavedNews={true} 
+       onDeleteArticle={onDeleteArticle}
+       />
     </section>
   );
 }
