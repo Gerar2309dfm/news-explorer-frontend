@@ -2,7 +2,11 @@ import Navigation from "../Navigation/Navigation";
 
 import "./Header.css";
 
-function Header({ onLoginClick }) {
+function Header({
+  onLoginClick,
+  onSignOut,
+  isLoggedIn,
+}) {
   return (
     <header className="header">
       <div className="header__container">
@@ -10,7 +14,11 @@ function Header({ onLoginClick }) {
           NewsExplorer
         </h1>
 
-        <Navigation onLoginClick={onLoginClick} />
+        <Navigation
+          onLoginClick={onLoginClick}
+          onSignOut={onSignOut}
+          isLoggedIn={isLoggedIn}
+        />
       </div>
     </header>
   );

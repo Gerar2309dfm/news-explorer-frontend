@@ -1,24 +1,23 @@
 import { useState } from "react";
-import "./LoginModal.css";
+import "./RegisterModal.css";
 
-function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
+function RegisterModal({
+  isOpen,
+  onClose,
+  onRegister,
+  onLoginClick,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const isValid =
-    email.trim() !== "" &&
-    password.trim() !== "";
+  const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!isValid) {
-      return;
-    }
-
-    onLogin({
+    onRegister({
       email,
       password,
+      name,
     });
   };
 
@@ -39,7 +38,7 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
         </button>
 
         <h2 className="modal__title">
-          Iniciar sesión
+          Inscribirse
         </h2>
 
         <form
@@ -53,7 +52,6 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
           <input
             type="email"
             className="modal__input"
-            placeholder="Introduce tu correo"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -66,41 +64,41 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
           <input
             type="password"
             className="modal__input"
-            placeholder="Introduce tu contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
 
+          <label className="modal__label">
+            Nombre de usuario
+          </label>
+
+          <input
+            type="text"
+            className="modal__input"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+
           <button
             type="submit"
-            className={`modal__submit ${
-              !isValid
-                ? "modal__submit_disabled"
-                : ""
-            }`}
-            disabled={!isValid}
+            className="modal__submit"
           >
-            Iniciar sesión
+            Inscribirse
           </button>
 
-          <div className="modal__switch">
-            <span className="modal__switch-text">
-             o
-            </span>
-
-            <button
-               type="button"
-              className="modal__switch-link"
-              onClick={onRegisterClick}
-            >
-              Inscribirse
-            </button>
-          </div>
+          <button
+            type="button"
+            className="modal__switch"
+            onClick={onLoginClick}
+          >
+            o iniciar sesión
+          </button>
         </form>
       </div>
     </div>
   );
 }
 
-export default LoginModal;
+export default RegisterModal;

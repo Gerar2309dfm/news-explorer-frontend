@@ -6,7 +6,11 @@ import closeIcon from "../../images/close.svg";
 
 import "./Navigation.css";
 
-function Navigation({ onLoginClick }) {
+function Navigation({
+  onLoginClick,
+  onSignOut,
+  isLoggedIn,
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -23,7 +27,9 @@ function Navigation({ onLoginClick }) {
 
       <ul
         className={`navigation__list ${
-          isMenuOpen ? "navigation__list_opened" : ""
+          isMenuOpen
+            ? "navigation__list_opened"
+            : ""
         }`}
       >
         <li>
@@ -35,22 +41,33 @@ function Navigation({ onLoginClick }) {
           </Link>
         </li>
 
-        <li>
-          <Link
-            to="/saved-news"
-            className="navigation__item"
-          >
-            Artículos guardados
-          </Link>
-        </li>
+        {isLoggedIn && (
+          <li>
+            <Link
+              to="/saved-news"
+              className="navigation__item"
+            >
+              Artículos guardados
+            </Link>
+          </li>
+        )}
 
         <li>
-          <button
-            className="navigation__button"
-            onClick={onLoginClick}
-          >
-            Iniciar sesión
-          </button>
+          {isLoggedIn ? (
+            <button
+              className="navigation__button"
+              onClick={onSignOut}
+            >
+              Cerrar sesión
+            </button>
+          ) : (
+            <button
+              className="navigation__button"
+              onClick={onLoginClick}
+            >
+              Iniciar sesión
+            </button>
+          )}
         </li>
       </ul>
     </nav>
